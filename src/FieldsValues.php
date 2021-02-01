@@ -17,9 +17,9 @@ class FieldsValues extends StaticValues
     public function __construct(array $types)
     {
         $values = [];
-        foreach (FieldsFetcherHelper::fetch($types) as $field) {
+        foreach (FieldsFetcherHelper::getTypes($types) as $type => $fields) {
 
-            $group = FieldTypesRegistry::switchCase($field['__typename'], [
+            $group = FieldTypesRegistry::switchCase($type, [
                 FieldTypesRegistry::ADDRESS    => Translator::get('plugin-addon-enum-fields', 'Address fields'),
                 FieldTypesRegistry::BOOLEAN    => Translator::get('plugin-addon-enum-fields', 'Boolean fields'),
                 FieldTypesRegistry::DATETIME   => Translator::get('plugin-addon-enum-fields', 'Datetime fields'),
@@ -35,10 +35,12 @@ class FieldsValues extends StaticValues
                 FieldTypesRegistry::USER       => Translator::get('plugin-addon-enum-fields', 'User fields'),
             ]);
 
-            $values[$field['name']] = [
-                'title' => $field['label'],
-                'group' => $group,
-            ];
+            foreach ($fields as $name => $title) {
+                $values[$name] = [
+                    'title' => $title,
+                    'group' => $group,
+                ];
+            }
         }
 
         parent::__construct($values);

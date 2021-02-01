@@ -78,7 +78,12 @@ class FieldsValidator implements ValidatorInterface
             );
         }
 
-        $fields = array_column(FieldsFetcherHelper::fetch($this->types), 'name');
+        $fields = array_keys(
+            array_merge(
+                array_values(FieldsFetcherHelper::getTypes($this->types))
+            )
+        );
+
         foreach ($values as $value) {
             if (!in_array($values, $fields)) {
                 $errors[] = Translator::get(

@@ -16,7 +16,35 @@ class FieldsFetcherHelper
 
     protected static ?array $data;
 
-    public static function fetch(array $types): array
+    public static function getType(string $type): array
+    {
+        $data = [];
+        $fields = self::fetch();
+
+        foreach ($fields as $field) {
+            if ($field['__typename'] === $type) {
+                $data[$field['name']] = $field['label'];
+            }
+        }
+
+        return $data;
+    }
+
+    public static function getTypes(array $types): array
+    {
+        $data = [];
+        $fields = self::fetch();
+
+        foreach ($fields as $field) {
+            if (in_array($field['__typename'], $types)) {
+                $data[$field['__typename']][$field['name']] = $field['label'];
+            }
+        }
+
+        return $data;
+    }
+
+    protected static function fetch(): array
     {
         if (!isset(self::$data)) {
 
@@ -41,12 +69,7 @@ class FieldsFetcherHelper
             self::$data = $response->getData()['fieldsFetcher']['fields'];
         }
 
-        return array_filter(
-            self::$data,
-            function ($value) use ($types) {
-                return in_array($value['__typename'], $types);
-            }
-        );
+        return self::$data;
     }
 
 }

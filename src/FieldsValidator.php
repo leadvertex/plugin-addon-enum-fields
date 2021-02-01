@@ -85,7 +85,7 @@ class FieldsValidator implements ValidatorInterface
         );
 
         foreach ($values as $value) {
-            if (!in_array($values, $fields)) {
+            if (!in_array($value, $fields)) {
                 $errors[] = Translator::get(
                     'plugin-addon-enum-fields',
                     'Invalid value "{value}"',

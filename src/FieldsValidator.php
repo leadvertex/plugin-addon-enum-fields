@@ -48,6 +48,7 @@ class FieldsValidator implements ValidatorInterface
                 'plugin-addon-enum-fields',
                 'Incorrect value'
             );
+            return $errors;
         }
 
         $limit = $definition->getLimit();

@@ -27,23 +27,23 @@ class FieldsValidator implements ValidatorInterface
     }
 
     /**
-     * @param $value
+     * @param $values
      * @param ListOfEnumDefinition|FieldDefinition $definition
      * @param FormData $data
      * @return array
      */
-    public function __invoke($value, FieldDefinition $definition, FormData $data): array
+    public function __invoke($values, FieldDefinition $definition, FormData $data): array
     {
         $errors = [];
 
-        if (is_null($value) && $this->allowNull === false) {
+        if (is_null($values) && $this->allowNull === false) {
             $errors[] = Translator::get(
                 'plugin-addon-enum-fields',
                 'Value can not be null'
             );
         }
 
-        if (!is_array($value)) {
+        if (!is_array($values)) {
             $errors[] = Translator::get(
                 'plugin-addon-enum-fields',
                 'Incorrect value'
@@ -52,7 +52,7 @@ class FieldsValidator implements ValidatorInterface
         }
 
         $limit = $definition->getLimit();
-        $count = count($value);
+        $count = count($values);
 
         if ($count < $limit->getMin()) {
             $errors[] = Translator::get(
@@ -78,13 +78,15 @@ class FieldsValidator implements ValidatorInterface
             );
         }
 
-        $values = array_column(FieldsFetcherHelper::fetch($this->types), 'name');
-        if (!in_array($value, $values)) {
-            $errors[] = Translator::get(
-                'plugin-addon-enum-fields',
-                'Invalid value "{value}"',
-                ['value' => (string) $value]
-            );
+        $fields = array_column(FieldsFetcherHelper::fetch($this->types), 'name');
+        foreach ($values as $value) {
+            if (!in_array($values, $fields)) {
+                $errors[] = Translator::get(
+                    'plugin-addon-enum-fields',
+                    'Invalid value "{value}"',
+                    ['value' => (string) $value]
+                );
+            }
         }
 
         return $errors;

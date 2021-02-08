@@ -16,7 +16,7 @@
     "leadvertex/plugin-component-form": "^0.10.6",
     "xakepehok/enum-helper": "^0.1.0",
     "leadvertex/plugin-component-access": "^0.1.8",
-    "leadvertex/plugin-component-api-client": "^0.5.1",
+    "leadvertex/plugin-component-api-client": "^0.6.0",
     "leadvertex/plugin-component-translations": "^0.1.2"
   },
   "autoload": {

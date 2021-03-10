@@ -24,6 +24,7 @@ class FieldTypesRegistry extends EnumHelper
     const INTEGER = 'IntegerField';
     const PHONE = 'PhoneField';
     const STRING = 'StringField';
+    const URI = 'UriField';
     const USER = 'UserField';
 
     public static function values(): array
@@ -41,6 +42,7 @@ class FieldTypesRegistry extends EnumHelper
             self::INTEGER,
             self::PHONE,
             self::STRING,
+            self::URI,
             self::USER,
         ];
     }

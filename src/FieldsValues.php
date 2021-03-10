@@ -32,6 +32,7 @@ class FieldsValues extends StaticValues
                 FieldTypesRegistry::INTEGER    => Translator::get('plugin-addon-enum-fields', 'Integer fields'),
                 FieldTypesRegistry::PHONE      => Translator::get('plugin-addon-enum-fields', 'Phone fields'),
                 FieldTypesRegistry::STRING     => Translator::get('plugin-addon-enum-fields', 'String fields'),
+                FieldTypesRegistry::URI        => Translator::get('plugin-addon-enum-fields', 'Uri fields'),
                 FieldTypesRegistry::USER       => Translator::get('plugin-addon-enum-fields', 'User fields'),
             ]);
 

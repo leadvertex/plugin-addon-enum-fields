@@ -56,7 +56,7 @@ class FieldsFetcherHelper
 
             $response = $client->query("
                 query {
-                    fieldsFetcher(filters: {archived: false}) {
+                    fieldsFetcher(filters: {include: { archived: false }}) {
                         fields {
                             name
                             label

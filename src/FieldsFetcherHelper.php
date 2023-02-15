@@ -50,7 +50,7 @@ class FieldsFetcherHelper
 
             $token = GraphqlInputToken::getInstance();
             $client = new ApiClient(
-                $token->getBackendUri() . 'companies/stark-industries/CRM',
+                "{$token->getBackendUri()}companies/{$token->getPluginReference()->getCompanyId()}/CRM",
                 (string) $token->getOutputToken()
             );
 

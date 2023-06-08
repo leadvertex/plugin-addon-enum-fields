@@ -80,7 +80,7 @@ class FieldsValidator implements ValidatorInterface
 
         $fields = array_keys(
             array_merge(
-                array_values(FieldsFetcherHelper::getTypes($this->types))
+                array_values(OrderFieldsFetcherHelper::getTypes($this->types))
             )
         );
 

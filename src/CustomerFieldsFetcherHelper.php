@@ -11,7 +11,7 @@ namespace Leadvertex\Plugin\Addon\EnumFields;
 use Leadvertex\Plugin\Components\Access\Token\GraphqlInputToken;
 use Leadvertex\Plugin\Components\ApiClient\ApiClient;
 
-class FieldsFetcherHelper
+class CustomerFieldsFetcherHelper
 {
 
     protected static ?array $data;
@@ -56,7 +56,7 @@ class FieldsFetcherHelper
 
             $response = $client->query("
                 query {
-                    fieldsFetcher(filters: {include: { archived: false }}) {
+                    customerFieldsFetcher(filters: {include: { archived: false }}) {
                         fields {
                             name
                             label
@@ -66,7 +66,7 @@ class FieldsFetcherHelper
                 }
             ", []);
 
-            self::$data = $response->getData()['fieldsFetcher']['fields'];
+            self::$data = $response->getData()['customerFieldsFetcher']['fields'];
         }
 
         return self::$data;

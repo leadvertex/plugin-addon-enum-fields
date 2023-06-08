@@ -14,7 +14,7 @@ use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnumDefinition;
 use Leadvertex\Plugin\Components\Form\FormData;
 use Leadvertex\Plugin\Components\Translations\Translator;
 
-class FieldsValidator implements ValidatorInterface
+class OrderFieldsValidator implements ValidatorInterface
 {
 
     private array $types;

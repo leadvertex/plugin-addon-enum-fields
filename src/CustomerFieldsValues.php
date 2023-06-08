@@ -17,7 +17,7 @@ class CustomerFieldsValues extends StaticValues
     public function __construct(array $types)
     {
         $values = [];
-        foreach (OrderFieldsFetcherHelper::getTypes($types) as $type => $fields) {
+        foreach (CustomerFieldsFetcherHelper::getTypes($types) as $type => $fields) {
 
             $group = CustomerFieldTypesRegistry::switchCase($type, [
                 CustomerFieldTypesRegistry::ADDRESS    => Translator::get('plugin-addon-enum-fields', 'Address fields'),

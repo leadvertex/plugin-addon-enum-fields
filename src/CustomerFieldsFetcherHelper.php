@@ -11,38 +11,10 @@ namespace Leadvertex\Plugin\Addon\EnumFields;
 use Leadvertex\Plugin\Components\Access\Token\GraphqlInputToken;
 use Leadvertex\Plugin\Components\ApiClient\ApiClient;
 
-class CustomerFieldsFetcherHelper
+class CustomerFieldsFetcherHelper extends FieldsFetcherHelper
 {
 
     protected static ?array $data;
-
-    public static function getType(string $type): array
-    {
-        $data = [];
-        $fields = self::fetch();
-
-        foreach ($fields as $field) {
-            if ($field['__typename'] === $type) {
-                $data[$field['name']] = $field['label'];
-            }
-        }
-
-        return $data;
-    }
-
-    public static function getTypes(array $types): array
-    {
-        $data = [];
-        $fields = self::fetch();
-
-        foreach ($fields as $field) {
-            if (in_array($field['__typename'], $types)) {
-                $data[$field['__typename']][$field['name']] = $field['label'];
-            }
-        }
-
-        return $data;
-    }
 
     protected static function fetch(): array
     {
@@ -51,7 +23,7 @@ class CustomerFieldsFetcherHelper
             $token = GraphqlInputToken::getInstance();
             $client = new ApiClient(
                 "{$token->getBackendUri()}companies/{$token->getPluginReference()->getCompanyId()}/CRM",
-                (string) $token->getOutputToken()
+                (string)$token->getOutputToken()
             );
 
             $response = $client->query("

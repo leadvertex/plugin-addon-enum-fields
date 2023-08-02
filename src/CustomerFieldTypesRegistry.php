@@ -10,22 +10,22 @@ namespace Leadvertex\Plugin\Addon\EnumFields;
 
 use XAKEPEHOK\EnumHelper\EnumHelper;
 
-class FieldTypesRegistry extends EnumHelper
+class CustomerFieldTypesRegistry extends EnumHelper
 {
-    const ADDRESS = 'AddressField';
-    const BOOLEAN = 'BooleanField';
-    const DATETIME = 'DateTimeField';
-    const EMAIL = 'EmailField';
-    const ENUM = 'EnumField';
-    const FILE = 'FileField';
-    const FLOAT = 'FloatField';
-    const HUMAN_NAME = 'HumanNameField';
-    const IMAGE = 'ImageField';
-    const INTEGER = 'IntegerField';
-    const PHONE = 'PhoneField';
-    const STRING = 'StringField';
-    const URI = 'UriField';
-    const USER = 'UserField';
+    const ADDRESS = 'AddressCustomerField';
+    const BOOLEAN = 'BooleanCustomerField';
+    const DATETIME = 'DateTimeCustomerField';
+    const EMAIL = 'EmailCustomerField';
+    const ENUM = 'EnumCustomerField';
+    const FILE = 'FileCustomerField';
+    const FLOAT = 'FloatCustomerField';
+    const HUMAN_NAME = 'HumanNameCustomerField';
+    const IMAGE = 'ImageCustomerField';
+    const INTEGER = 'IntegerCustomerField';
+    const PHONE = 'PhoneCustomerField';
+    const STRING = 'StringCustomerField';
+    const URI = 'UriCustomerField';
+    const USER = 'UserCustomerField';
 
     public static function values(): array
     {

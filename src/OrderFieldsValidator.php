@@ -14,7 +14,7 @@ use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnumDefinition;
 use Leadvertex\Plugin\Components\Form\FormData;
 use Leadvertex\Plugin\Components\Translations\Translator;
 
-class FieldsValidator implements ValidatorInterface
+class OrderFieldsValidator implements ValidatorInterface
 {
 
     private array $types;
@@ -80,7 +80,7 @@ class FieldsValidator implements ValidatorInterface
 
         $fields = array_keys(
             array_merge(
-                array_values(FieldsFetcherHelper::getTypes($this->types))
+                array_values(OrderFieldsFetcherHelper::getTypes($this->types))
             )
         );
 
